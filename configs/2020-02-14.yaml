@@ -1,0 +1,25 @@
+_BASE_: "Base-RCNN-FPN.yaml"
+MODEL:
+  MASK_ON: False
+  WEIGHTS: "output/model_final.pth"
+  PIXEL_STD: [57.375, 57.120, 58.395]
+  RESNETS:
+    STRIDE_IN_1X1: False  # this is a C2 model
+    NUM_GROUPS: 32
+    WIDTH_PER_GROUP: 8
+    DEPTH: 101
+  ROI_HEADS:
+    NUM_CLASSES: 17
+    SCORE_THRESH_TEST: 0.2
+    BATCH_SIZE_PER_IMAGE: 512
+    SCORE_THRESH_TEST: 0.3
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 200000
+  IMS_PER_BATCH: 1
+  BASE_LR: 0.00001
+DATASETS:
+  TEST: ("animals_val", )
+  TRAIN: ("animals_training",)
+DATALOADER:
+  NUM_WORKERS: 1

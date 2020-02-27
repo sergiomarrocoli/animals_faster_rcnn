@@ -2,3 +2,10 @@ animals_test/
 animals_training/
 animals_val/
 output_dir/
+output/
+output_files/
+models/
+old_models/
+input_files/
+videos/
+demo.py
